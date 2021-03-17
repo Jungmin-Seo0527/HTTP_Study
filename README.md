@@ -194,7 +194,8 @@
 #### URL 전체 문법
 
 * scheme://[userinfo@]host[:port][/path][?query][#fragment]
-* <https://www.google.com:443/search?q=hello&hl=ko>
+* https://www.google.com:443/search?q=hello&hl=ko
+  <br><br>
 
 * 프로토콜(https)
 * 호스트명(www.google.com)
@@ -205,28 +206,69 @@
 #### URL scheme
 
 * **scheme:**//[userinfo@]host[:port][/path][?query][#fragment]
-* <**https:**//www.google.com:443/search?q=hello&hl=ko>
+* **https:**//www.google.com:443/search?q=hello&hl=ko
+  <br><br>
+* 주로 프로토콜 사용
+* 프로토콜 : 어떤 방식으로 자원에 접근할 것인가 하는 약속, 규칙
+    * 예) http, https, ftp 등등
+* http는 80 포트, https는 443 포트를 주로 사용, 포트는 생략 가능
+* https는 http에 보안 추가 (HTTP Secure)
+
+#### URL userinfo
+
+* scheme://**[userinfo@]**host[:port][/path][?query][#fragment]
+* https://www.google.com:443/search?q=hello&hl=ko <br><br>
+
+* URL에 사용자 정보를 포함해서 인증
+* 거의 사용하지 않음
+
+#### URL host
+
+* scheme://[userinfo@]**host**[:port][/path][?query][#fragment]
+* https://**www.google.com**:443/search?q=hello&hl=ko <br><br>
+* 호스트명
+* 도메인명 또는 IP 주소를 직접 사용가능
+
+#### URL PORT
+
+* scheme://[userinfo@]host **[:port]**[/path][?query][#fragment]
+* https://www.google.com:**443**/search?q=hello&hl=ko<br><br>
+* 포트(PORT)
+* 접속 포트
+* 일반적으로 생략, 생략시 http는 80, https는 443
+
+#### URL path
+
+* scheme://[userinfo@]host[:port] **[/path]**[?query][#fragment]
+* https://www.google.com:443 **/search**?q=hello&hl=ko<br><br>
+* 리소스 경로(path), 계층적 구조
+* 예)
+    * /home/file1.jpg
+    * /members
+    * /members/100,/items/iphone12
+
+#### URL query
+
+* scheme://[userinfo@]host[:port] **[/path]**[?query][#fragment]
+* https://www.google.com:443/search **?q=hello&hl=ko**<br><br>
+* key = value 형태
+* ?로 시작, &로 추가 가능 ?keyA=valueA&keyB=valueB
+* query parameter, query string 등으로 불림, 웹서버에 제공하느 파라미터, 문자형태
+
+#### URL fragment
+
+* scheme://[userinfo@]host[:port][/path][?query] **[#fragment]**
+* http://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html/
+  **#getting-started-introducing-spring-boot** <br><br>
+* fragment
+* html 내부 북마크 등에 사용
+* 서버에 전송하는 정보 아님
+
+### 2-2. 웹 브라우저 요청 흐름
 
 ----
 
 # Note
-
-리소스를 식별     
-URI, URL, URN ???     
-URI : locator, name 또는 둘다 추가로 분류될 수 있다.
-
-URL -> foo://example.com:8042/over/there?name=ferret#nose   
-URN -> urn:example:animal:ferret:nose
-
-#### URI 단어 뜻
-
-#### URL, URN 단어 뜻
-
-#### URL 분석
-
-<http://www.google.com/search?q=hello&hl=ko>
-
-#### URL 전체 문법, 스키마
 
 ----
 
