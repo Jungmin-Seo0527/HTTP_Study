@@ -139,5 +139,103 @@
     * HTTP - 80
     * HTTPS - 443
 
+### 1-5. DNS
+
+#### IP 주소의 단점
+
+* IP 주소는 사람이 기억하기 어렵다.
+* IP 주소는 변경될 수 있다. -> 새로운 IP 주소를 알지 못하면 전송 불가능
+
+#### DNS
+
+**도메인 네임 시스템(Domain Name System)**
+
+* 전화번호부
+* 도메인 명을 IP 주소로 변환
+
+![도메인 사용](./image/1-5_도메인_사용.jpg)
+
+## 2. URI와 웹 브라우저 요청 흐름
+
+* URL
+* 웹 브라우저 요청 흐름
+
+### 2-1. URI (Uniform Resource Identifier)
+
+* URI? URL? URN?
+* URI는 로케이터(locator), 이름(name) 또는 둘다 추가로 분류될 수 있다.
+
+![](./image/2-1_URI.jpg)
+
+![](./image/2-1_URI_URL.jpg)
+
+#### URI 단어 뜻
+
+* **U**niform : 리소스 식별하는 통일된 방식
+* **R**esource : 자원, URI로 식별할 수 있는 모든 것(제한 없음)
+* **I**dentifier : 다른 항목과 구분하는데 필요한 정보
+
+* URL : Uniform Resource Locator
+* URN : Uniform Resource Name
+
+#### URL, URN 단어 뜻
+
+* URL - Locator : 리소스가 있는 위치를 지정
+* URN - Name : 리소스에 이름을 부여
+* 위치는 변할 수 있지만, 이름은 변하지 않는다.
+* urn:isbn:8960777331 (어떤 책의 isbn URN)
+* URN 이름만으로 실제 리소스를 찾을 수 있는 방법이 보편화 되지 않음
+* **앞으로 URI를 URL과 같은 의미로 이야기하겠음**
+
+#### URL 분석
+
+<https://www.google.com/search?q=hello&hl=ko>
+
+#### URL 전체 문법
+
+* scheme://[userinfo@]host[:port][/path][?query][#fragment]
+* <https://www.google.com:443/search?q=hello&hl=ko>
+
+* 프로토콜(https)
+* 호스트명(www.google.com)
+* 포트 번호(443)
+* 패스(/search)
+* 쿼리 파라미터(q=hello&hl=ko)
+
+#### URL scheme
+
+* **scheme:**//[userinfo@]host[:port][/path][?query][#fragment]
+* <**https:**//www.google.com:443/search?q=hello&hl=ko>
+
+----
+
+# Note
+
+리소스를 식별     
+URI, URL, URN ???     
+URI : locator, name 또는 둘다 추가로 분류될 수 있다.
+
+URL -> foo://example.com:8042/over/there?name=ferret#nose   
+URN -> urn:example:animal:ferret:nose
+
+#### URI 단어 뜻
+
+#### URL, URN 단어 뜻
+
+#### URL 분석
+
+<http://www.google.com/search?q=hello&hl=ko>
+
+#### URL 전체 문법, 스키마
+
+----
+
+
+
+
+
+
+
+
 
 
