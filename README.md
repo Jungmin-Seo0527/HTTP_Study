@@ -10,7 +10,20 @@
 * [1-4. PORT](#1-4-port)
 * [1-5. DNS](#1-5-dns)
 
-[2. URI와 웹 브라우저 요청 흐름](#2-uri----)
+[2. URI와 웹 브라우저 요청 흐름](2-uri와-웹-브라우저-요청-흐름)
+
+* [2-1. 2-uri와-웹-브라우저-요청-흐름](#2-1-uri-uniform-resource-identifier)
+* [2-2. 웹 브라우저 요청 흐름](#2-2-웹-브라우저-요청-흐름)
+
+[3. HTTP 기본](3-http-기본)
+
+* [3-1. 모든것이 HTTP](#3-1-모든것이-http)
+* [3-2. 클라이언트 서버 구조](#3-2-클라이언트-서버-구조)
+* [3-3. Stateful, Stateless](#3-3-stateful-stateless)
+* [3-4. 비 연결성(connectionless)](#3-4-비-연결성-connectionless-)
+* [3-5. HTTP 메시지](#3-5-http-메시지)
+
+---
 
 ## 1. Internet-network
 
@@ -278,7 +291,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                             
+####                                                                                                           
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -349,7 +362,7 @@ HTTP 메시지에 모든 것을 전송<br><br>
 * 단순함, 확장 기능<br><br>
 * 위의 내용은 이후 더 자세히 설명...
 
-### 2-2. 클라이언트 서버 구조
+### 3-2. 클라이언트 서버 구조
 
 * Request Response 구조
 * 클라이언트는 서버에 요청을 보내고, 응답을 대기
@@ -358,7 +371,7 @@ HTTP 메시지에 모든 것을 전송<br><br>
 * 서버 -> 비즈니스 로직, 데이터등, 클라이언트 -> UI, 사용성
 * 클라이언트와 서버가 각각 독립적으로 진화가 가능!!!
 
-### 2-3. Stateful, Stateless
+### 3-3. Stateful, Stateless
 
 #### 무상태 프로토콜
 
@@ -434,9 +447,9 @@ HTTP 메시지에 모든 것을 전송<br><br>
     * 예) 로그인
 * 로그인한 사용자의 경우 로그인 했다는 상태를 서버에 유지
 
-### 2-4. 비 연결성(connectionless)
+### 3-4. 비 연결성(connectionless)
 
-### 2-5. HTTP 메시지
+### 3-5. HTTP 메시지
 
 ----
 
