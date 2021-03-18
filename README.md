@@ -2,9 +2,9 @@
 
 ## 목차
 
-[1. Internet-network](#1-internet-network)<br>
+[1. Internet-network](#1-internet-network)
 
-* [1-1 인터넷 통신](#1-1--)
+* [1-1 인터넷 통신](#1-1-인터넷-통신)
 * [1-2. IP(Internet Protocol)](#1-2-ipinternet-protocol)
 * [1-3. TCP, UDP](#1-3-tcp-udp)
 * [1-4. PORT](#1-4-port)
@@ -278,7 +278,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                            
+####                                                                             
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
