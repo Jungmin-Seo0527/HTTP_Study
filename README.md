@@ -20,7 +20,7 @@
 * [3-1. 모든것이 HTTP](#3-1-모든것이-http)
 * [3-2. 클라이언트 서버 구조](#3-2-클라이언트-서버-구조)
 * [3-3. Stateful, Stateless](#3-3-stateful-stateless)
-* [3-4. 비 연결성(connectionless)](#3-4-비-연결성-connectionless-)
+* [3-4. 비 연결성(connectionless)](#3-4-비-연결성connectionless)
 * [3-5. HTTP 메시지](#3-5-http-메시지)
 
 ---
