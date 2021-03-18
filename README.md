@@ -1,5 +1,17 @@
 # HTTP
 
+## 목차
+
+[1. Internet-network](#1-internet-network)<br>
+
+* [1-1 인터넷 통신](#1-1--)
+* [1-2. IP(Internet Protocol)](#1-2-ipinternet-protocol)
+* [1-3. TCP, UDP](#1-3-tcp-udp)
+* [1-4. PORT](#1-4-port)
+* [1-5. DNS](#1-5-dns)
+
+[2. URI와 웹 브라우저 요청 흐름](#2-uri----)
+
 ## 1. Internet-network
 
 ### 1-1. 인터넷 통신
@@ -266,7 +278,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                               
+####                                                                            
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -421,7 +433,6 @@ HTTP 메시지에 모든 것을 전송<br><br>
 * 상태 유지
     * 예) 로그인
 * 로그인한 사용자의 경우 로그인 했다는 상태를 서버에 유지
-
 
 ### 2-4. 비 연결성(connectionless)
 
