@@ -225,14 +225,14 @@
 #### URL host
 
 * scheme://[userinfo@]**host**[:port][/path][?query][#fragment]
-* https://**www.google.com**:443/search?q=hello&hl=ko <br><br>
+* https:// **www.google.com**:443/search?q=hello&hl=ko <br><br>
 * 호스트명
 * 도메인명 또는 IP 주소를 직접 사용가능
 
 #### URL PORT
 
 * scheme://[userinfo@]host **[:port]**[/path][?query][#fragment]
-* https://www.google.com:**443**/search?q=hello&hl=ko<br><br>
+* https://www.google.com: **443**/search?q=hello&hl=ko<br><br>
 * 포트(PORT)
 * 접속 포트
 * 일반적으로 생략, 생략시 http는 80, https는 443
@@ -266,9 +266,45 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
+####                         
+
+* https://www.google.com/search?q=hello&hl=ko
+* https://**www.google.com:443**/search?q=hello&hl=ko
+    * DNS 조회
+    * HTTPS PORT 생략, 443
+    * HTTP 요청 메시지 생성
+
+#### HTTP 요청 메시지
+
+![](./image/2-2_HTTP요청메시지.jpg)<br><br>
+
+#### HTTP 메시지 전송
+
+![](./image/2-2_HTTP메시지전송.jpg)<br><br>
+
+* TCP/IP 계층에서 생성된 패킷은 HTTP 메시지, 출발지 IP, PORT, 목적지 IP, PORT 를 포함하고 있다.
+* 패킷이 웹 브라우저 (클라이언트) 에서 서버로 전송된다.
+* 서버는 HTTP 응답 메시지를 웹 브라우저에게 전송한다.
+
+<br><br>
+
+* HTTP 응답메시지
+  ![](./image/2-2_HTTP응답메시지.jpg)
+
+* 웹 브라우저는 응답 패킷을 받아서 HTML를 랜더링하여 사용자에게 페이지를 보여준다.
+
 ----
 
 # Note
+
+DNS 조회, 포트 -> HTTP 요청 메시지 생성<br>
+GET/search?q=hello^&ho=ko HTTP/1.1 HOST: www.google.com <br>
+
+http 요청 메시지
+
+http 메시지 전송
+
+
 
 ----
 
