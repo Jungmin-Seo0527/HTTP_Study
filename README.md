@@ -25,10 +25,10 @@
 
 [4. HTTP 메서드](#4-http-메서드)
 
-* [4-1. HTTP API를 만들어보자](#http-api를-만들어보자)
-* [4-2. HTTP 메서드 - GET, POST](#http-메서드-get-post)
-* [4-3. HTTP 메서드 - PUT, PATCH, DELETE](#http-메서드-put-patch-delete)
-* [4-4. HTTP 메서드의 속성](#http-메서드의-속성)
+* [4-1. HTTP API를 만들어보자](#4-1-http-api를-만들어보자)
+* [4-2. HTTP 메서드 - GET, POST](#4-2-http-메서드---get-post)
+* [4-3. HTTP 메서드 - PUT, PATCH, DELETE](#4-3-http-메서드---put-patch-delete)
+* [4-4. HTTP 메서드의 속성](#4-4-http-메서드의-속성)
 
 ---
 
@@ -298,7 +298,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                                                                                                                                             
+####                                                                                                                                                                                              
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -579,13 +579,13 @@ HTTP 메시지에 모든 것을 전송<br><br>
 
 ## 4. HTTP 메서드
 
-### 4.1 HTTP API를 만들어보자
+### 4-1 HTTP API를 만들어보자
 
 ### 4-2. HTTP 메서드 - GET, POST
 
 ### 4-3. HTTP 메서드 - PUT, PATCH, DELETE
 
-### HTTP 메서드의 속성
+### 4-4. HTTP 메서드의 속성
 
 ----
 
