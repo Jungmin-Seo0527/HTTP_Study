@@ -23,6 +23,13 @@
 * [3-4. 비 연결성(connectionless)](#3-4-비-연결성connectionless)
 * [3-5. HTTP 메시지](#3-5-http-메시지)
 
+[4. HTTP 메서드](#4-http-메서드)
+
+* [4-1. HTTP API를 만들어보자](#http-api를-만들어보자)
+* [4-2. HTTP 메서드 - GET, POST](#http-메서드-get-post)
+* [4-3. HTTP 메서드 - PUT, PATCH, DELETE](#http-메서드-put-patch-delete)
+* [4-4. HTTP 메서드의 속성](#http-메서드의-속성)
+
 ---
 
 ## 1. Internet-network
@@ -291,7 +298,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                                                                                                                                      
+####                                                                                                                                                                                             
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -570,25 +577,19 @@ HTTP 메시지에 모든 것을 전송<br><br>
 * 단순함, 확장 가능
 * **지금은 HTTP시대**
 
+## 4. HTTP 메서드
+
+### 4.1 HTTP API를 만들어보자
+
+### 4-2. HTTP 메서드 - GET, POST
+
+### 4-3. HTTP 메서드 - PUT, PATCH, DELETE
+
+### HTTP 메서드의 속성
+
 ----
 
 # Note
-
-모든것이 HTTP
-
-공백라인은 무조건 있어야함
-
-요청 메시지
-
-시작라인
-
-
-
-
-
-
-
-
 
 ----
 
