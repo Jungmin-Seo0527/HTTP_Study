@@ -298,7 +298,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                                                                                                                                                                                                                 
+####                                                                                                                                                                                                                                                                  
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -508,26 +508,26 @@ HTTP 메시지에 모든 것을 전송<br><br>
 
 ![HTTP 메시지 구조](https://i.ibb.co/TLvKFQ4/HTTP-message-structure.jpg)
 
-#### 시작 라인 - 요청 메시지
+#### 시작 라인<br>요청 메시지
 
-* start-line = **request-line** / status - lline
+* start-line = **request-line** / status - line
 * **request-line** = method SP(공백) request-target SP HTTP-version CRLF(엔터)
 * HTTP 메서드 (GET: 조회)
-* 요청 대산(/search?q=hello&hl=ko)
+* 요청 대상(/search?q=hello&hl=ko)
 * HTTP Version
 
-#### 시작 라인 - 요청 메시지 - HTTP메서드
+#### 시작 라인<br>요청 메시지 - HTTP메서드
 
 * 종류 : GET, POST, PUT, DELETE ...
 * 서버가 수행해야 할 동작 지정
     * GET : 리소스 조회
     * POST : 요청 내역 처리
 
-#### 시작 라인 - 요청 메시지 - 요청 대상
+#### 시작 라인<br>요청 메시지 - 요청 대상
 
 ![](https://i.ibb.co/thBGwFF/bandicam-2021-03-26-15-35-28-120.jpg)
 
-* absolute - path[?query](절대경로[?쿼리])
+* absolute - path\[?query](절대경로\[?쿼리])
 * 절대경로 = "/"로 시작하는 경로
 * 참고 : *, http://...?x=y 와 같이 다른 유형의 경로 지정 방법도 있다.
 
@@ -535,7 +535,7 @@ HTTP 메시지에 모든 것을 전송<br><br>
 
 * HTTP Version
 
-#### 시작 라인 - 응답 메시지
+#### 시작 라인<br>응답 메시지
 
 ![](https://i.ibb.co/GVs7Mjj/HTTP-response-message.jpg)
 
@@ -555,22 +555,22 @@ HTTP 메시지에 모든 것을 전송<br><br>
 
 ![HTTP header](https://i.ibb.co/xDHJhkD/HTTP-header.jpg)
 
-#### HTTP 헤더 - 용도
+#### HTTP 헤더<br>용도
 
 * HTTP 전송에 필요한 모든 부가 정보
-* 예( 메시지 바디의 내용, 메세지 바디의 크기, 압축, 인증, 요청 클라이언트(브라우저)정보, 서버 애플리케이션 정보, 캐시 관리 정보...)
+* 예) 메시지 바디의 내용, 메세지 바디의 크기, 압축, 인증, 요청 클라이언트(브라우저)정보, 서버 애플리케이션 정보, 캐시 관리 정보...)
 * 표준 헤더가 너무 많음
 * 필요시 임의의 헤더 추가 가능
     * helloworld: hihi
 
-#### HTTP 메시지 바디 - 용도
+#### HTTP 메시지 바디<br>용도
 
 * 실제 전송할 데이터
 * HTML 문서, 이미지, 영상, JSON 등등 byte로 표현할 수 있는 모든 데이터 전송 가능
 
 #### 단순함 확장 가능
 
-* HTTP는 단순하다. 스펙도 읽어볼만...
+* HTTP는 단순하다.
 * HTTP 메시지도 매우 단순
 * 크게 성골하는 표준 기술은 단순하지만 확장 가능한 기술
 
