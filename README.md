@@ -298,7 +298,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                                                                                                                                                                                                                  
+####                                                                                                                                                                                                                                                                                                        
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -732,11 +732,118 @@ HTTP 메시지에 모든 것을 전송<br><br>
 * 실제로는 GET, HEAD 정도만 캐시로 사용
     * POST, PATCH는 본문 내용까지 캐시 키로 고려해야 하는데, 구현이 쉽지 않음
 
+## 5. HTTP 메서드 활용
+
+***
+
+* 클라이언트에서 서버로 데이터 전송
+* HTTP API 설계 예시
+
+### 5-1. 클라이언트에서 서버로 데이터 전송
+
+#### 클라이언트에서 서버로 데이터 전송<br>- 데이터 전달 방식은 크게 2가지
+
+* **쿼리 파라미터를 통한 데이터 전송**
+    * GET
+    * 주로 정렬 필터(검색어)
+
+* **메시지 바디를 통한 데이터 전송**
+    * POST, PUT, PATCH
+    * 회원 가입, 상품 주문, 리소스 등록, 리소스 변경
+
+#### 클라이언트에서 서버로 데이터 전송<br>- 4가지 상황
+
+* **정적 데이터 조회**
+    * 이미지, 정적 텍스트 문서
+
+* **동적 데이터 조회**
+    * 주로 검색, 게시판 목록에서 정렬 필터(검색어)
+
+* **HTML Form을 통한 데이터 전송**
+    * 회원 가입, 상품 주문, 데이터 변경
+
+* **HTTP API를 통한 데이터 전송**
+    * 회원 가입, 상품 주문, 데이터 변경
+    * 서버 to 서버, 앱 클라이언트, 웹 클라이언트 (Ajax)
+
+#### 정적 데이터 조회<br>-쿼리 파라미터 미사용
+
+![](https://i.ibb.co/DM3pytH/bandicam-2021-05-15-14-35-59-226.jpg)
+
+#### 정적 데이터 조회<br> -정리
+
+* 이미지, 정적 텍스트 문서
+* 조회는 GET 사용
+* 정적 데이터는 일반적으로 쿼리 파라미터 없이 리소스 경로로 단순하게 조회 가능
+
+#### 동적 데이터 조회<br> -쿼리 파라미터 사용
+
+![](https://i.ibb.co/X4Gn8vf/bandicam-2021-05-15-14-38-18-521.jpg)
+
+#### 동적 데이터 조회<br> -정리
+
+* 주로 검색, 게시판 목록에서 정렬 필터(검색어)
+* 조회 조건을 줄여주는 필터, 조회 결과를 정렬하느 정렬 조건에 주로 사용
+* 조회는 GET 사용
+* GET는 쿼리 파라니터 사용해서 데이터를 전달
+
+#### HTML Form 데이터 전송<br> POST전송 - 저장
+
+![](https://i.ibb.co/w0Fnwvx/bandicam-2021-05-15-14-40-47-114.jpg)
+
+#### HTML Form 데이터 전송<br> GET전송 - 저장
+
+![](https://i.ibb.co/cJzj589/bandicam-2021-05-15-14-42-26-109.jpg)
+
+#### HTML Form 데이터 전송<br> GET전송 - 조회
+
+![](https://i.ibb.co/fD2yjQN/bandicam-2021-05-15-14-43-24-310.jpg)
+
+#### HTML Form 데이터 전송<br> multipart/form-data
+
+![](https://i.ibb.co/ym2ZkZK/bandicam-2021-05-15-14-44-33-304.jpg)
+
+#### HTML Form 데이터 전송<br> 정리
+
+* HTML Form submit시 POST 전송
+    * 예) 회원 가입, 상품 주문, 데이터 변경
+
+* Content-Type : application/x-www-form-urlencoded 사용
+    * form의 내용을 메시지 바디를 통해서 전송(key=value, 쿼리 파라미터 형식)
+    * 전송 데이터를 url encoding 처리
+        * 예) abc김 -> abc%EA%B9%8
+* HTML Form은 GET 전송도 가능
+* Content-Tpye: multipart/form-data
+    * 파일 업로드 같은 바이너리 데이터 전송시 사용
+    * 다른 종류의 여러 파일과 폼의 내용 함께 전송 가능(그래서 이름이 multipart)
+* 참고: HTML Form 전송은 **GET, POST만 지원**
+
+#### HTTP API 데이터 전송
+
+![](https://i.ibb.co/j8tmr1g/bandicam-2021-05-15-14-50-25-314.jpg)
+
+#### HTTP API 데이터 전송<br> 정리
+
+* 서버 to 서버
+    * 백엔드 시스템 통신
+* 앱 클라이언트
+    * 아이폰, 안드로이드
+* 웹 클라이언트
+    * HTML에서 Form 전송 대신 자바 스크립트를 통한 통신에 사용(AJAX)
+    * 예) React, VueJs 같은 웹 클라이언트와 API 통신
+* POST, PUT, PATCH: 메시지 바디를 통해 데이터 전송
+* GET: 조회, 쿼리 파라미터로 데이터 전달
+* Content-Type: application/json을 주로 사용(사실상 표준)
+    * TEXT, XML, JSON 등등
+
 ----
 
 # Note
 
 ----
+
+
+
 
 
 
