@@ -298,7 +298,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                                                                                                                                                                                                                                                        
+####                                                                                                                                                                                                                                                                                                                                          
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -783,7 +783,7 @@ HTTP 메시지에 모든 것을 전송<br><br>
 #### 동적 데이터 조회<br> -정리
 
 * 주로 검색, 게시판 목록에서 정렬 필터(검색어)
-* 조회 조건을 줄여주는 필터, 조회 결과를 정렬하느 정렬 조건에 주로 사용
+* 조회 조건을 줄여주는 필터, 조회 결과를 정렬하는 정렬 조건에 주로 사용
 * 조회는 GET 사용
 * GET는 쿼리 파라니터 사용해서 데이터를 전달
 
@@ -835,6 +835,130 @@ HTTP 메시지에 모든 것을 전송<br><br>
 * GET: 조회, 쿼리 파라미터로 데이터 전달
 * Content-Type: application/json을 주로 사용(사실상 표준)
     * TEXT, XML, JSON 등등
+
+### 5-2. HTTP API 설계 예시
+
+* **HTTP API - 컬렉션**
+    * **POST 기반 등록**
+    * 예) 회원 관리 API 제공
+* **HTTP API - 스토어**
+    * **PUT 기반 등록**
+    * 예) 정적 컨텐츠 관리, 원격 파일 관리
+
+* **HTML FORM 사용**
+    * 웹 페이지 회원 관리
+    * GET, POST만 지원
+
+#### 회원 관리 시스템<br> API 설계 - POST 기반 등록
+
+* **회원** 목록 /members **-> GET**
+* **회원** 등록 /members **-> POST**
+* **회원** 조회 /members{id} **-> GET**
+* **회원** 수정 /members{id} **-> PATCH, PUT, POST**
+* **회원** 삭제 /members{id} **-> DELETE**
+
+#### 회원 관리 시스템<br> POST - 신규 자원 등록 특징
+
+* 클라이언트는 등록될 리소스의 URI를 모른다.
+    * 회원 등록 /members -> POST
+    * POST /members
+
+* 서버가 새로 등록된 리소스 URI를 생성해준다.
+    * HTTP/1.1 201 Created<br>
+      Location: **members/100**
+
+* 컬렉션(Collections)
+    * 서버가 관리하는 리소스 디렉토리
+    * 서버가 리소스의 URI를 생성하고 관리
+    * 여기서 컬렉션은 /members
+
+#### 파일 관리 시스템<br> API 설계 - PUT 기반 등록
+
+* **파일** 목록 /files **-> GET**
+* **파일** 조회 /files/{filename} **-> GET**
+* **파일** 등록 /files/{filename} **-> PUT**
+* **파일** 삭제 /files/{filename} **-> DELETE**
+* **파일** 대량 등록 /files **-> POST**
+
+#### 파일 관리 시스템<br> PUT - 신규 자원 등록 특징
+
+* 클라이언트가 리소스 URI를 알고 있어야 한다.
+    * 파일 등록 /files/{filename} -> PUT
+    * PUT **/files/star.jpg**
+
+* 클라이언트가 직접 리소스의 URI를 지정한다.
+    * PUT 은 해당 리소스를 먼저 찾는 과정을 수행한다. 해당 리소스를 찾으려면 URI가 필요하다.
+
+* 스토어(Store)
+    * 클라이언트가 관리하는 리소스 저장소
+    * 클라이언트가 리소스의 URI를 알고 관리
+    * 여기서 스토어는 /files
+
+#### HTML FORM 사용
+
+* HTML FORM은 **GET, POST만 지원**
+* AJAX 같은 기술을 사용해서 해결 가능 -> 회원 API 참고
+* 여기서는 순수 HTML, HTML FORM 이야기
+* GET, POST만 지원하므로 제약이 있음
+
+#### HTML FORM 사용<br> API 설계
+
+* **회원** 목록 /members **-> GET**
+* **회원** 등록 폼 /members/new **-> GET**
+* **회원** 등록 /members/new, /members **-> POST**
+    * 대부분은 등록 폼과 동일하게 /members/new 방식으로 하는것이 편하다.
+
+* **회원** 조회 /members/{id} **-> GET**
+* **회원** 수정 폼 /members/{id}/edit **-> GET**
+* **회원** 수정 /members/{id}/edit, /members/{id} **-> POST**
+* **회원** 삭제 /members/{id}/delete **->POST**
+
+#### HTML FORM 사용<br> 정리
+
+* HTML FORM은 **GET, POST만 지원**
+* **컨트롤 URI**
+    * GET, POST만 지원하므로 제약이 있음
+    * 이런 제약을 해결하기 위해 동사로 된 리소스 경로 사용
+    * POST의 /new, /edit, /delete가 컨트롤 URI
+    * HTTP 메서드로 해결하기 애매한 경우 사용(HTTP API 포함)
+
+#### 정리
+
+* **HTTP API - 컬렉션**
+    * **POST 기반 등록**
+    * **서버가 리소스 URI 결정**
+    * 실무에서는 put 기반보다 post 기반을 더 많이 쓴다.
+
+* **HTTP API - 스토어**
+    * **PUT 기반 등록**
+    * **클라이언트가 리소스 URI 결정**
+
+* **HTML FORM 사용**
+    * 순수 HTML + HTML form 사용
+    * GET, POST만 지원
+
+#### 정리<br> 참고하면 좋은 URI 설계 개념
+
+* 문서(document)
+    * 단일 개념(파일 하나, 객체 인스턴스, 데이터 베이스 row)
+    * 예) /members/100, /files/star.jpg
+
+* 컬렉션(collection)
+    * 서버가 관리하는 리소스 디렉터리
+    * 서버가 리소스의 URI를 생성하고 관리
+    * 예) /members
+
+* 스토어(store)
+    * 클라이언트가 관리하는 자원 저장소
+    * 클라이언트가 리소스의 URI를 알고 관리
+    * 예) /files
+
+* 컨트롤러(controller), 컨트롤 URI
+    * 문서, 컬렉션, 스토어롤 해결하기 어려운 추가 프로세스 실행
+    * 동사를 직접 사용
+    * 예) /members/{id}/delete
+
+[참고](http://restfulapi.net/resource-naming)
 
 ----
 
