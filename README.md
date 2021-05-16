@@ -298,7 +298,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                                                                                                                                                                                                                                                                                                                                             
+####                                                                                                                                                                                                                                                                                                                                                                                                                        
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -1188,6 +1188,115 @@ HTTP 메시지에 모든 것을 전송<br><br>
 * 서비스 이용 불가
 * 서버가 일시작인 과부하 또는 예정된 작업으로 잠시 요청을 처리할 수 없음
 * Retry-After 에더 필드로 얼마뒤에 복구되는지 보낼 수도 있음
+
+## 7. HTTP 헤더1 - 일반헤더
+
+### 7-1. HTTP 헤더 개요
+
+#### HTTP 헤더
+
+* header-field = field-name ":" OWS field-value OWS (OWS: 띄어쓰기 허용)
+* field-name은 대소문자 구문 없음
+  ![](https://i.ibb.co/cNv0ZcL/bandicam-2021-05-16-15-31-58-690.jpg)
+
+#### HTTP 헤더<br> 용도
+
+* HTTP 전송에 필요한 모든 부가 정보
+* 예) 메시지 바디의 내용, 메시지 바디의 크기, 압축, 인증, 요청 클라이언트, 서버 정보, 캐시 관리 정보...
+* 표준 헤더가 너무 많음
+* 필요시 임의의 헤더 추가 가능
+    * helloworld: hihi
+
+![](https://i.ibb.co/N31RRsg/bandicam-2021-05-16-15-34-15-480.jpg)
+
+#### HTTP 헤더<br> 분류 - RFC2616(과거)
+
+* 헤더 분류
+    * General 헤더: 메시지 전체에 적용되는 정보, 예)Connection: close
+    * Request 헤더: 요청 정보, 예) User-Agent: Mozilla/5.0 (Macintosh;..)
+    * Response 헤더: 응답 정보, 예) Server: Apache
+    * Entity 헤더: 엔티티 바디 정보, 예) Content-Type: text/html, Content-Length: 3423
+
+![](https://i.ibb.co/qnydB5n/bandicam-2021-05-16-15-37-31-017.jpg)
+
+#### HTTP BODY<br> message body - RFC2616(과거)
+
+* 메시지 본문(message body)엔티티 본문(entity body)을 전달하는데 사용
+* 엔티티 본문은 요청이나 응답에서 전달할 실제 데이터
+* **엔티티 헤더**는 **엔티티 본문**의 데이터를 해석할 수 있는 정보 제공
+    * 데이터 유형(html, json), 데이터 길이, 압축 정보 등등
+
+#### RFC723x 변화
+
+* 1999년 RFC2616 -> 2014년 RFC7230~7235 등장
+* 엔티티(Entity) -> 표현(Representation)
+* Representation = representation Metadata + Representation Data
+* 표현 = 표현 메티데이터 + 표현 데이터
+
+#### HTTP BODY<br> message body-RFC7230(최신)
+
+* 메시지 본문(message body)을 통해 표현 데이터 전달
+* 메시지 본문 = 페이로드(payload)
+* **표현**은 요청이나 응답에서 전달할 실제 데이터
+* **표현 헤더는 표현 데이터**를 해석할 수 있는 정보 젝홍
+    * 데이터 유형(html, json), 데이터 길이, 입축 정보 등등
+
+* 참고: 표현 헤더는 표현 메타데이터와, 페이로드 메시지를 구분해야 하지만, 여기서는 생략
+
+![](https://i.ibb.co/Q99M5h0/bandicam-2021-05-16-15-43-51-609.jpg)
+
+### 7-2. 표현
+
+#### 표현
+
+![](https://i.ibb.co/stkL1cq/bandicam-2021-05-16-15-51-57-860.jpg)
+
+* Content-Type: 표현 데이터의 형식
+* Content-Encoding: 표현 데이터의 압축 방식
+* Content-Language: 표현 데이터의 자연 언어
+* Content-Length: 표현 데이터의 길이
+* 표현 헤더는 전송, 응답 둘다 사용
+
+#### Content-Type
+
+![](https://i.ibb.co/pLtPwNR/bandicam-2021-05-16-15-53-50-124.jpg)
+
+* 표현 데이터의 형식 설명
+* 미디어 타입, 문자 인코딩
+* 예)
+    * text/html; charset=utf-8
+    * application/json
+    * image/png
+
+#### Content-Encoding
+
+![](https://i.ibb.co/9mxvmwq/bandicam-2021-05-16-15-55-27-999.jpg)
+
+* 표현 데이터를 압축하기 위해 사용
+* 데이터를 전달하는 곳에서 압축 후 인코딩 헤더 추가
+* 데이터를 읽는 쪽에서 인코딩 헤더의 정보로 압축 해제
+* 예)
+    * gzip
+    * deflate
+    * identity: 압축 안함
+
+#### Content-Languae
+
+![](https://i.ibb.co/CV2mrq6/bandicam-2021-05-16-15-56-43-283.jpg)
+
+* 표현 데이터의 자연 언어를 표현
+* 예)
+    * ko
+    * en
+    * en-US
+
+#### Content-Length
+
+![](https://i.ibb.co/XV7DFrP/bandicam-2021-05-16-15-58-19-780.jpg)
+
+* 표현 데이터의 길이
+* 바이트 단위
+* Transfer-Encoding(전송 코딩)을 사용하면 Content-Length를 사용하면 안됨
 
 ----
 
