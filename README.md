@@ -298,7 +298,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                                                                                                                                                                                                                                                                                                                                                                        
+####                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -1297,6 +1297,83 @@ HTTP 메시지에 모든 것을 전송<br><br>
 * 표현 데이터의 길이
 * 바이트 단위
 * Transfer-Encoding(전송 코딩)을 사용하면 Content-Length를 사용하면 안됨
+
+### 7-3. 협상(콘텐츠 네고시에이션)
+
+#### 협상(콘텐츠 네고시에이션)<br> 클라이언트카 선호하는 표현 요청
+
+* Accept: 클라이언트가 선호하는 미디어 타입 전달
+* Accept-Charset: 클라이언트가 선호하는 문자 인코딩
+* Accept-Encoding: 클라이언트가 선호하는 압축 인코딩
+* Accept-Language: 클라이언트가 선호하는 자연 언어
+* 협상 헤더는 요청시에만 사용
+
+#### Accept-Language 적용 전
+
+![](https://i.ibb.co/R3ZQLbD/bandicam-2021-05-16-17-55-57-992.jpg)
+
+* 요청울 보내면 무조건 적으로 기본 언어인 영어로 요청한 자료가 도착
+
+#### Accept-Language 적용 후
+
+![](https://i.ibb.co/BTGYnd1/bandicam-2021-05-16-17-57-18-386.jpg)
+
+* 요청을 보낼때 선호하는 언어는 한국어라고 알려주면 서버에서 한국어로 데이터를 보내준다.(단 한국어를 지원 할때만...)
+
+#### Accept-Language 복잡한 예시
+
+![](https://i.ibb.co/3WGM8SC/bandicam-2021-05-16-17-59-06-362.jpg)
+
+* 클라이언트는 한국어를 선호하는데 서버는 한국어를 지원하지 않는 경우
+    * 그냥 서버의 기본 지원 언어로 보내 버린다.
+    * 언어에 따른 선호도롤 알려주면 선호도에 따라 언어를 선택해서 전달 받을 수 있다.
+
+#### 협상과 우선순위1<br> Quality Values(q)
+
+![](https://i.ibb.co/XxRfn40/bandicam-2021-05-16-18-03-17-238.jpg)
+
+* Quality Values(q) 값 사용
+* 0~1, **클수록 높은 우선순위**
+* 생략하면 1
+* Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+    * 1 ko-KR;q=1 (q생략)
+    * 2 ko;q=0.9
+    * 3 en-US;q=0.8
+    * 4 en;q=0.7
+
+#### Accept-Language 복잡한 예시
+
+![](https://i.ibb.co/jwZ5CVk/bandicam-2021-05-16-18-04-14-514.jpg)
+
+* 언어에 따른 선호도를 서버에게 알려준다.
+* 서버는 자신이 지원할 수 있는 언어중 선호도가 높은 언어를 선택해서 보내준다.
+
+#### 협상과 우선순위2<br> Quality Values(q)
+
+![](https://i.ibb.co/yVzCcZZ/bandicam-2021-05-16-18-07-32-126.jpg)
+
+* 구체적인 것이 우선한다.
+* Accept: text/\*, text/plain, text/plain;format=flowed, \*/\*
+    * 1 text/plain;format=flowed
+    * 2 text/plain
+    * 3 text/\*
+    * 4 \*/\*
+
+#### 협상과 우선순위3<br> Quality Values(q)
+
+* 구체적인 것을 기준으로 미디어 타입을 맞춘다.
+* Accept: text/\*;q=0.3, text/html;q=0.7, text/html;level=1, text/html;level=1;q=0.4,\*/\*;q=0.5
+
+| Media Type| Quality |
+| --------- | ------- |
+|text/html;level=1| 1 |
+|text/html| 0.7 |
+|text/plain| 0.3 |
+|image/jpeg| 0.5 |
+|text/html;level=2 | 0.4 |
+| text/html;level=3 | 0.7|
+
+### 7-4. 전송 방식
 
 ----
 
