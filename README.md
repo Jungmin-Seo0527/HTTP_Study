@@ -298,7 +298,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+####                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -1374,6 +1374,47 @@ HTTP 메시지에 모든 것을 전송<br><br>
 | text/html;level=3 | 0.7|
 
 ### 7-4. 전송 방식
+
+* Transfer-Encoding
+* Range, Content-Range
+
+#### 전송 방식 설명
+
+* 단순 전송
+* 압축 전송
+* 분할 전송
+* 범위 전송
+
+#### 단순 전송
+
+* Content-Length
+
+![](https://i.ibb.co/4sPLmL9/bandicam-2021-05-17-14-54-48-715.jpg)
+
+* Content의 길이를 명시해 준다.
+
+#### 압축 전송
+
+* Content-Encoding
+
+![](https://i.ibb.co/Pm61Jgp/bandicam-2021-05-17-14-56-51-504.jpg)
+
+* Content의 압축 방식을 명시해 준다.
+
+#### 분할 전송
+
+* Transfer-Encoding
+
+![](https://i.ibb.co/TtxhgFv/bandicam-2021-05-17-14-59-31-067.jpg)
+
+* 분할 전송에는 Content-Length를 명시하면 안된다.
+
+#### 범위 전송
+
+* Range, Content-Range
+
+![](https://i.ibb.co/Y8PYbk9/bandicam-2021-05-17-15-01-01-433.jpg)
+
 
 ----
 
