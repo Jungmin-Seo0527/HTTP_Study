@@ -268,7 +268,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+####                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -1464,6 +1464,21 @@ HTTP 메시지에 모든 것을 전송<br><br>
 * 503(Service Unavailable): 서비스가 언제까지 불능인지 알려줄 수 있음
 * Retry-After: Fri, Dec 1999 23:59:59 GMT (날짜 표기)
 * Retry-After: 120 (초단위 표기)
+
+### 7-7. 인증
+
+* Authorization: 클라이언트 인증 정보를 서버에 전달
+* WWW-Authenticate: 리소스 접근시 필요한 인증 방법 정의
+
+#### Authorization<br> 클라이언트 인증 정보를 서버에 전달
+
+* Authorization: Basic xxxxxxxxxxxxxxxx
+
+#### WWW-Authenticate<br> 리소스 접근시 필요한 인증 방법 정의
+
+* 리소스 접근시 필요한 인증 방법 정의
+* 401 Unauthorized 응답과 함께 사용
+* WWW-Authenticate: Newauth realm="apps",type=1,title="Login to\"apps\"",Basic realm="simple"
 
 ----
 
