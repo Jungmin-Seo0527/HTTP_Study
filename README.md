@@ -1,34 +1,4 @@
-# HTTP
-
-## 목차
-
-[1. Internet-network](#1-internet-network)
-
-* [1-1 인터넷 통신](#1-1-인터넷-통신)
-* [1-2. IP(Internet Protocol)](#1-2-ipinternet-protocol)
-* [1-3. TCP, UDP](#1-3-tcp-udp)
-* [1-4. PORT](#1-4-port)
-* [1-5. DNS](#1-5-dns)
-
-[2. URI와 웹 브라우저 요청 흐름](2-uri와-웹-브라우저-요청-흐름)
-
-* [2-1. 2-uri와-웹-브라우저-요청-흐름](#2-1-uri-uniform-resource-identifier)
-* [2-2. 웹 브라우저 요청 흐름](#2-2-웹-브라우저-요청-흐름)
-
-[3. HTTP 기본](3-http-기본)
-
-* [3-1. 모든것이 HTTP](#3-1-모든것이-http)
-* [3-2. 클라이언트 서버 구조](#3-2-클라이언트-서버-구조)
-* [3-3. Stateful, Stateless](#3-3-stateful-stateless)
-* [3-4. 비 연결성(connectionless)](#3-4-비-연결성connectionless)
-* [3-5. HTTP 메시지](#3-5-http-메시지)
-
-[4. HTTP 메서드](#4-http-메서드)
-
-* [4-1. HTTP API를 만들어보자](#4-1-http-api를-만들어보자)
-* [4-2. HTTP 메서드 - GET, POST](#4-2-http-메서드---get-post)
-* [4-3. HTTP 메서드 - PUT, PATCH, DELETE](#4-3-http-메서드---put-patch-delete)
-* [4-4. HTTP 메서드의 속성](#4-4-http-메서드의-속성)
+# HTTP 이론 정리
 
 ---
 
@@ -298,7 +268,7 @@
 
 ### 2-2. 웹 브라우저 요청 흐름
 
-####                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+####                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
 * https://www.google.com/search?q=hello&hl=ko
 * https://**www.google.com:443**/search?q=hello&hl=ko
@@ -1458,7 +1428,42 @@ HTTP 메시지에 모든 것을 전송<br><br>
 * Date: Tue, 15 Nov 1994 08:12:31 GMT
 * 응답에서 사용
 
+### 7-6. 특별한 정보
 
+* Host: 요청한 호스트 정도(도메인)
+* Location: 페이지 리다이렉션
+* Allow: 허용 가능한 HTTP 메서드
+* Retry-After: 유저 에이전트가 다음 요청을 하기까지 기다려야 하는 시간
+
+#### Host<br> 요청한 호스트 정보(도메인)
+
+![](https://i.ibb.co/X8dsxJH/bandicam-2021-05-26-19-19-42-119.jpg)
+
+* 요청에서 사용
+* 필수
+* 하나의 서버가 여러 도메인을 처리해야 할 때
+* 하나의 IP 주소에 여러 도메인이 적용되어 있을 때
+    * 하나의 서버에 여러 애플리케이션이 구동될 수 있다.
+
+![](https://i.ibb.co/WgFTvNP/bandicam-2021-05-26-19-22-56-098.jpg)
+
+#### Location<br> 페이지 리다이렉션
+
+* 웹 브라우저는 3xx 응답의 결과에 Location 헤더가 있으며, Location 위치로 자동 이동(리다이렉트)
+* 응답코드 3xx에서 설명
+* 201 (Created): Location 값은 요청에 의해 생성된 리소스 URI
+* 3xx (Redirection): Location 값은 요청을 자동으로 리디렉션하기 위한 대상 리소스를 가리킴
+
+#### Allow<br> 허용 가능한 HTTP 메서드
+
+* 405 (Method Not Allowed)에서 응답에 포함해야 함
+* Allow: GET, HEAD, PUT
+
+#### Retry-After<br> 유저 에이전트가 다음 요청을 하기까지 기다려야 하는 시간
+
+* 503(Service Unavailable): 서비스가 언제까지 불능인지 알려줄 수 있음
+* Retry-After: Fri, Dec 1999 23:59:59 GMT (날짜 표기)
+* Retry-After: 120 (초단위 표기)
 
 ----
 
