@@ -68,7 +68,7 @@
 
 전송 제어 프로토콜(Transmission Control Protocol)
 
-* 연결 지향 - TCP 3 wqy handshake (가상 연결)
+* 연결 지향 - TCP 3 way handshake (가상 연결)
 * 데이터 전달 보증
 * 순서 보장
 * 신뢰할 수 있는 프로토콜
