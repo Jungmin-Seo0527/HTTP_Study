@@ -96,7 +96,7 @@
 * https://www.google.com:443/search **?q=hello&hl=ko**<br><br>
 * key = value 형태
 * ?로 시작, &로 추가 가능 ?keyA=valueA&keyB=valueB
-* query parameter, query string 등으로 불림, 웹서버에 제공하느 파라미터, 문자형태
+* query parameter, query string 등으로 불림, 웹서버에 제공하는 파라미터, 문자형태
 
 #### URL fragment
 
